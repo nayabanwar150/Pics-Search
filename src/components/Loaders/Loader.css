@@ -1,0 +1,28 @@
+.loader {
+  border: 13px solid rgb(209, 199, 191);
+  border-top: 13px solid #000; 
+  border-radius: 50%;
+  width: 80px !important;
+  height: 80px !important;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .loader {
+    border: 8px solid rgb(104, 180, 174);
+    border-top: 8px solid #000; 
+    border-radius: 50%;
+    width: 40px !important;
+    height: 40px !important;
+    animation: spin 2s linear infinite;
+  }
+}

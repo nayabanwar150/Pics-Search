@@ -1,0 +1,31 @@
+.images {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.images > img {
+  max-width: 300px;
+  text-align: center;
+  margin: 5px auto;
+  padding: 0;
+}
+
+.images > img:hover {
+    filter: brightness(.5);
+ }
+
+.container .row{
+    --bs-gutter-x: 0px !important;
+}
+
+.close_btn>button{
+    display: block;
+    float: right !important;
+    border: none;
+    background-color: rgba(255, 255, 255, 1);
+    font-size: 1.5rem;
+}
+
+.modal_image>img{
+    width: 100%;
+}

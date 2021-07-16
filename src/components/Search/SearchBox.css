@@ -1,0 +1,9 @@
+.searchBox{
+    background-color: #000;
+    min-height: 1.5rem;
+}
+.searchBox>form>input{
+    min-height: 2.4rem;
+    border-radius: 5px;
+    padding-left: 10px;
+}

@@ -1,0 +1,12 @@
+.header{
+    width: 100%;
+    min-height: 3rem;
+    background-color: #000;
+}
+
+.heading>h1{
+    font-size: 2rem;
+    font-weight: 600;
+    color: #fff;
+    text-align: center;
+}
