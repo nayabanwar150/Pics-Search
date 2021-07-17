@@ -3,6 +3,7 @@ import Images from "../Results/Images";
 import API from "../../ApiConfig";
 import axios from "axios";
 import InfiniteScroll from "react-infinite-scroll-component";
+import Loader from '../Loaders/Loader'
 
 const Default = () => {
   const [photos, setPhotos] = useState([]);
@@ -15,7 +16,7 @@ const Default = () => {
     setPage((page += 1));
     try {
       const resp = await axios.get(
-        `${API.baseURL}flickr.photos.getRecent&api_key=${API.key}&per_page=${perPage}&page=${page}&format=json&nojsoncallback=1&safe_search=1`
+        `${API.baseURL}flickr.photos.getRecent&api_key=${API.key}&per_page=${perPage}&page=${page}&format=json&nojsoncallback=1&safe_search=2`
       );
       setPhotos([...photos, ...resp.data.photos.photo]);
       setLoading(false);
@@ -27,24 +28,27 @@ const Default = () => {
   useEffect(() => {
     fetchImages();
   }, []);
-
+  console.log("default loaded");
   return (
-    <div>
-      {photos && (
-        <InfiniteScroll
-          dataLength={photos.length}
-          next={fetchImages}
-          hasMore={true}
-          endMessage={
-            <p style={{ textAlign: "center" }}>
-              <b>Yay! You have seen it all</b>
-            </p>
-          }
-        >
-          <Images images={photos} loading={loading} type="default" />
-        </InfiniteScroll>
-      )}
-    </div>
+    <>
+      <div>
+        {photos.length > 0 && (
+          <InfiniteScroll
+            dataLength={photos.length}
+            next={fetchImages}
+            hasMore={true}
+            endMessage={
+              <p style={{ textAlign: "center" }}>
+                <b>Yay! You have seen it all</b>
+              </p>
+            }
+          >
+            <Images images={photos} />
+          </InfiniteScroll>
+        )}
+      </div>
+      {loading && <Loader />}
+    </>
   );
 };
 

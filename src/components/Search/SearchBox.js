@@ -4,9 +4,9 @@ import "./SearchBox.css";
 import Images from "../Results/Images";
 import InfiniteScroll from "react-infinite-scroll-component";
 import API from "../../ApiConfig";
+import Loader from '../Loaders/Loader'
 
-function SearchBox() {
-  const [searchText, setSearchText] = useState("");
+function SearchBox({ searchText, setSearchText }) {
   const [photos, setPhotos] = useState([]);
   const [loading, setLoading] = useState(false);
   var [page, setPage] = useState(1);
@@ -43,7 +43,7 @@ function SearchBox() {
           />
         </form>
       </div>
-      {searchText && photos && (
+      {searchText && photos.length > 0 && (
         <InfiniteScroll
           dataLength={photos.length}
           next={searchImages}
@@ -54,9 +54,10 @@ function SearchBox() {
             </p>
           }
         >
-          <Images images={photos} loading={loading} type="searched"/>
+          <Images images={photos} />
         </InfiniteScroll>
       )}
+      {loading && <Loader />}
     </>
   );
 }

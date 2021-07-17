@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./images.css";
-import Lightbox from "react-image-lightbox";
 import "react-image-lightbox/style.css";
 import Modal from "react-modal";
-import Loader from "../Loaders/Loader";
 import { FaRegWindowClose } from "react-icons/fa";
 
 const customStyles = {
@@ -19,7 +17,7 @@ const customStyles = {
   },
 };
 
-const Pics = ({ images, loading, type }) => {
+const Pics = ({ images, type }) => {
   const [photos, setPhotos] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [modalData, setModalData] = useState("");
@@ -36,19 +34,13 @@ const Pics = ({ images, loading, type }) => {
   }
 
   useEffect(() => {
-    if (type === "default") {
-      setPhotos(images);
-    } else {
-      setPhotos([]);
-      setPhotos(images);
-    }
+    setPhotos(images);
   }, [images]);
 
   return (
     <>
       <div className="container">
         <div className="row">
-          {loading && <Loader />}
           {photos &&
             photos.map((pic, index) => {
               const url = `https://live.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}.jpg`;

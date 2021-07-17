@@ -2,7 +2,7 @@ import React from "react";
 import "./Header.css";
 import SearchBox from "../Search/SearchBox";
 
-function Header() {
+function Header({ searchText, setSearchText }) {
   return (
     <div className="row">
       <div className="header">
@@ -12,7 +12,7 @@ function Header() {
       </div>
       <div className="row">
         <div className="col text-center">
-          <SearchBox />
+          <SearchBox searchText={searchText} setSearchText={setSearchText} />
         </div>
       </div>
     </div>
